@@ -1,12 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Header from './components/Header';
-import HomeScreen from './Screens/HomeScreen';
+import Header from './components/Header/Header';
+import HomeScreen from './screens/HomeScreen';
 
 function App() {
   return (
     <Router>
-      <p>s</p>
       <Header />
       <Switch>
         <Route path="/" exact component={HomeScreen} />

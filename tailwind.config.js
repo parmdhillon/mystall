@@ -20,11 +20,17 @@ module.exports = {
         900: '#006357',
       },
     },
-    extend: {},
+    extend: {
+      borderOpacity: {
+        '10': '0.1',
+        '20': '0.2',
+        '95': '0.95',
+       }
+    },
   },
   variants: {
     extend: {
-
+      borderWidth: ['hover', 'focus'],
     },
   },
   plugins: [],
