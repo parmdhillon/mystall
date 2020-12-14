@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Logo from '../assets/img/Logo.png';
+import { FaClipboardList, FaShoppingCart, FaUser } from 'react-icons/fa';
 
 const Header = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -31,6 +32,29 @@ const Header = () => {
                 } transition duration-500 h-1 w-full block rounded-full bg-gray-300 my-1`}
               ></span>
             </div>
+          </div>
+          <div className="absolute m-auto w-11/12 top-16 rounded-2xl flex flex-col p-4 bg-sea-green-700 md:static md:w-auto md:m-0 md:p-0 md:flex-row md:bg-opacity-0 md:justify-end">
+            <a
+              className="block py-2 text-white text-left rounded-3xl hover:bg-sea-green-600 md:text-black md:px-6"
+              href="/"
+            >
+              <FaUser className="inline-block align-middle text-sea-green-900 md:hidden" />{' '}
+              <span className="align-middle inline-block px-2">Account</span>
+            </a>
+            <a
+              className="block py-2 text-white text-left rounded-3xl hover:bg-sea-green-600 md:text-black md:px-6"
+              href="/"
+            >
+              <FaClipboardList className="inline-block align-middle text-sea-green-900 md:hidden" />{' '}
+              <span className="align-middle inline-block px-2">Orders</span>
+            </a>
+            <a
+              className="block py-2 text-white text-left rounded-3xl hover:bg-sea-green-600 md:text-black md:px-6  md:hover:bg-opacity-0 md:rounded-none "
+              href="/"
+            >
+              <FaShoppingCart className="inline-block align-middle text-sea-green-900 md:hidden" />{' '}
+              <span className="align-middle inline-block px-2">Cart</span>
+            </a>
           </div>
         </nav>
       </header>

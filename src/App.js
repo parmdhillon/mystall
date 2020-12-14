@@ -6,6 +6,7 @@ import HomeScreen from './Screens/HomeScreen';
 function App() {
   return (
     <Router>
+      <p>s</p>
       <Header />
       <Switch>
         <Route path="/" exact component={HomeScreen} />
