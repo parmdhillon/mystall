@@ -3,8 +3,22 @@ const colors = require('tailwindcss/colors');
 module.exports = {
   //purge: [],
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: false,
   theme: {
+    fontFamily: {
+      sans: [
+        'Sen',
+        'system-ui',
+        '-apple-system',
+        'Segoe UI',
+        'Roboto',
+        'Helvetica',
+        'Arial',
+        'sans-serif',
+        'Apple Color Emoji',
+        'Segoe UI Emoji',
+      ],
+    },
     colors: {
       ...colors,
       'sea-green': {
@@ -22,10 +36,10 @@ module.exports = {
     },
     extend: {
       borderOpacity: {
-        '10': '0.1',
-        '20': '0.2',
-        '95': '0.95',
-       }
+        10: '0.1',
+        20: '0.2',
+        95: '0.95',
+      },
     },
   },
   variants: {
