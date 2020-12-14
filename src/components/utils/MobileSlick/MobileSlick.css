@@ -1,0 +1,35 @@
+.slick-prev:before,
+.slick-next:before {
+  font-family: 'slick';
+  font-size: 20px;
+  line-height: 1;
+  color: #00cbb1;
+  background-color: #fff;
+  border-radius: 20px;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-prev {
+  z-index: 1;
+  left: -10px;
+}
+.slick-prev:before {
+  content: '←';
+}
+
+.slick-next {
+  z-index: 1;
+  right: -10px;
+}
+[dir='rtl'] .slick-next {
+  right: auto;
+  left: -25px;
+}
+.slick-next:before {
+  content: '→';
+}
+[dir='rtl'] .slick-next:before {
+  content: '←';
+}
