@@ -1,13 +1,16 @@
 import React from 'react';
 
-const BannerCard = ({ bg }) => {
+const BannerCard = ({ bg, img, children }) => {
   return (
     <div className="px-3">
       <div
-        className={`w-full h-28 mx rounded-2xl px-4 py-2`}
+        className={`flex justify-between items-center w-full h-28 mx rounded-2xl px-4 py- overflow-hidden`}
         style={{ background: `${bg}` }}
       >
-        <h1>Parm</h1>
+        <div className="flex flex-col">{children}</div>
+        <div className="w-2/4">
+          <img src={img} alt="Banner" />
+        </div>
       </div>
     </div>
   );
