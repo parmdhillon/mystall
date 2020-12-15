@@ -18,6 +18,7 @@ module.exports = {
         'Apple Color Emoji',
         'Segoe UI Emoji',
       ],
+      display: ['Fredoka One', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial'],
     },
     colors: {
       ...colors,

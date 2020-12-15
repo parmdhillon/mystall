@@ -25,7 +25,7 @@ const BannerCards = () => {
           </span>
         </BannerCard>
         <BannerCard bg="#DAFFE3" img={banner3}>
-        <span style={{color:'#00CD32'}}className="font-bold">30% OFF</span>
+        <span style={{color:'#00CD32'}}className="font-bold">15% OFF</span>
           <span className="text-gray-600 block mt-3">
             <span className="text-xs">SPECIAL</span>
             <span className="block font-bold text-lg">DEALS</span>
