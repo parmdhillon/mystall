@@ -1,15 +1,17 @@
 import React from 'react';
-import './Categories.css';
-import Category from './Category';
-
+import { useMediaQuery } from 'react-responsive';
+import DesktopCategories from './DesktopCategories';
+import MobileCategories from './MobileCategories';
 const Categories = () => {
+  const isMobile = useMediaQuery({
+    query: '(max-width: 640px)',
+  });
+
   return (
-    <div>
+    <>
       <h2 className="text-gray-500 text-xl font-display">Categories</h2>
-      <div className="flex flex-wrap">
-        <Category img="/img/categories/veggies.png" name="Veggies" />
-      </div>
-    </div>
+      {isMobile ? <MobileCategories /> : <DesktopCategories/>}
+    </>
   );
 };
 

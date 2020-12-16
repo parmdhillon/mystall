@@ -11,20 +11,20 @@ const MobileSlick = (props) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    initialSlide: 0,
     responsive: [
       {
         breakpoint: 2000,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
         },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+          slidesToScroll: 1,
         },
       },
       {
@@ -36,11 +36,11 @@ const MobileSlick = (props) => {
       },
     ],
   };
+;
+
   const cards = props.children;
   return (
-    <>
-      <Slider {...settings}>{cards}</Slider>
-    </>
+    <Slider {...settings}>{cards}</Slider>
   );
 };
 

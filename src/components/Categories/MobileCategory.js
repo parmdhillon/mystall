@@ -1,5 +1,6 @@
 import React from 'react';
 import ImageLazy from '../ImageLazy/ImageLazy';
+import './MobileCategory.css';
 
 const Category = ({ name, img }) => {
   return (
