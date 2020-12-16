@@ -1,0 +1,3 @@
+.perRow {
+  flex: 0 1 calc(50% - 1rem);
+}
