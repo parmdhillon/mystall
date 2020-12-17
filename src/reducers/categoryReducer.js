@@ -14,12 +14,24 @@ export const currentCategoryReducer = (state, action) => {
   }
 };
 
-export const allCategoryReducer = (state, action) => {
+export const allCategoryReducer = (state = { categories: [] }, action) => {
   switch (action.type) {
+    case actionType.SET_ALL_CATEGORIES_REQ:
+      return {
+        loading: true,
+        categories: [],
+      };
     case actionType.SET_ALL_CATEGORIES_SUCCESS:
       return {
-        ...state,
+        loading: false,
         categories: action.payload,
+        error: false,
+      };
+    case actionType.SET_ALL_CATEGORIES_FAIL:
+      return {
+        loading:false,
+        categories:[],
+        error:action.payload
       };
     default:
       return {

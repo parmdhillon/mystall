@@ -4,9 +4,9 @@ import DesktopCategory from './DesktopCategory';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actionTypes from '../../actionTypes/categoryActionTypes';
 
-const DesktopCategories = ({categories}) => {
+const DesktopCategories = ({ categories }) => {
   //SET/GET Current Category
-  const [leftOffset, setLeftOffset] = useState('28');
+  const [leftOffset, setLeftOffset] = useState({ left: '0', width: '0' });
   const { catName } = useSelector((state) => state.currentCategory);
   const dispatch = useDispatch();
   const setCategoryHandler = (catName, _id) => {
@@ -16,8 +16,8 @@ const DesktopCategories = ({categories}) => {
     });
   };
   const setBgHandler = (el) => {
-    const { left } = el.getBoundingClientRect();
-    setLeftOffset(left);
+    const { left, width } = el.getBoundingClientRect();
+    setLeftOffset({ left, width });
   };
 
   const sliderSettings = {
@@ -27,19 +27,19 @@ const DesktopCategories = ({categories}) => {
     slidesToScroll: 1,
   };
 
-
   return (
     <div className="my-2">
       <div
         style={{
-          left: `${leftOffset}px`,
+          left: `${leftOffset.left}px`,
+          width: `${leftOffset.width}px`,
           transitionTimingFunction: 'cubic-bezier(0.68, -0.55, 0.265, 1.55',
         }}
-        className="w-28 h-8 bg-sea-green-500 rounded-full absolute transition-all duration-500"
+        className="h-8 bg-sea-green-500 rounded-full absolute transition-all duration-300"
       ></div>
       {categories && (
         <Slider {...sliderSettings}>
-          {categories.map((category, key) => (
+          {categories.map((category) => (
             <DesktopCategory
               name={category.name}
               key={category._id}
