@@ -1,10 +1,18 @@
 import React from 'react';
 import MobileCategory from './MobileCategory';
 
-const MobileCategories = () => {
+const MobileCategories = ({ categories }) => {
   return (
     <div className="flex flex-wrap my-3">
-      <MobileCategory img="/img/categories/veggies.png" name="Veggies" />
+      {categories &&
+        categories.map((category) => (
+          <MobileCategory
+            img={`/img/categories/${category.img}.png`}
+            name={category.name}
+            key={category._id}
+            id={category._id}
+          />
+        ))}
     </div>
   );
 };

@@ -2,19 +2,23 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
-import { categoryReducer } from './reducers/categoryReducer';
+import {
+  currentCategoryReducer,
+  allCategoryReducer,
+} from './reducers/categoryReducer';
 
 const middleware = [thunk];
 
 const initialState = {
-  category: {
+  currentCategory: {
     catName: 'Veggies',
   },
 };
 
 export const store = createStore(
   combineReducers({
-    category: categoryReducer,
+    currentCategory: currentCategoryReducer,
+    allCategories: allCategoryReducer,
   }),
   initialState,
   composeWithDevTools(applyMiddleware(...middleware))
