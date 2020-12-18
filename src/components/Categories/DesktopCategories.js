@@ -35,13 +35,14 @@ const DesktopCategories = ({ categories }) => {
           width: `${leftOffset.width}px`,
           transitionTimingFunction: 'cubic-bezier(0.68, -0.55, 0.265, 1.55',
         }}
-        className="h-8 bg-sea-green-500 rounded-full absolute transition-all duration-300"
+        className="h-8 bg-sea-green-500 rounded-full absolute transition-all duration-500"
       ></div>
       {categories && (
         <Slider {...sliderSettings}>
-          {categories.map((category) => (
+          {categories.map((category, index) => (
             <DesktopCategory
               name={category.name}
+              index={index}
               key={category._id}
               id={category._id}
               selected={catName === category.name}

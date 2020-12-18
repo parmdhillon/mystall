@@ -12,7 +12,7 @@ const HomeScreen = () => {
       <HomeBanner />
       <BannerCards />
       <Categories />
-      <Products />
+      <Products isHome/>
     </div>
   );
 };

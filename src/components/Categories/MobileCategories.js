@@ -7,7 +7,7 @@ const MobileCategories = ({ categories }) => {
       {categories &&
         categories.map((category) => (
           <MobileCategory
-            img={`/img/categories/${category.img}.png`}
+            img={category.img}
             name={category.name}
             key={category._id}
             id={category._id}

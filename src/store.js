@@ -11,7 +11,8 @@ const middleware = [thunk];
 
 const initialState = {
   currentCategory: {
-    catName: 'Veggies',
+    catName: '',
+    _id: '',
   },
 };
 
