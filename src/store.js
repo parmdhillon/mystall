@@ -7,6 +7,8 @@ import {
   allCategoryReducer,
 } from './reducers/categoryReducer';
 
+import { allProductsReducer } from './reducers/productReducers';
+
 const middleware = [thunk];
 
 const initialState = {
@@ -20,6 +22,7 @@ export const store = createStore(
   combineReducers({
     currentCategory: currentCategoryReducer,
     allCategories: allCategoryReducer,
+    allProducts: allProductsReducer,
   }),
   initialState,
   composeWithDevTools(applyMiddleware(...middleware))

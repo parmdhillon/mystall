@@ -9,7 +9,7 @@ const ImageLazy = ({ src, alt }) => {
     <LazyImage
       src={src}
       alt={alt}
-      debounceDurationMs={3000}
+      debounceDurationMs={200}
       className="max-w-full max-h-full"
       placeholder={({ imageProps, ref }) => (
         <div ref={ref} className="w-full h-full animated-background"></div>
