@@ -53,6 +53,8 @@ const Products = ({ isHome, history }) => {
             <Product
               name={product.name}
               key={product._id}
+              catName={catName}
+              id={product._id}
               img={product.img}
               price={product.price.toFixed(2)}
               qtyType={product.qtyType}

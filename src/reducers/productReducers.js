@@ -31,3 +31,35 @@ export const allProductsReducer = (
       };
   }
 };
+
+export const singleProductReducer = (
+  state = { loading: false, product: [] },
+  action
+) => {
+  switch (action.type) {
+    case actionType.GET_PRODUCT_REQ:
+      return {
+        loading: true,
+        product: [],
+        error: false,
+      };
+
+    case actionType.GET_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        product: action.payload,
+      };
+
+    case actionType.GET_PRODUCT_FAIL:
+      return {
+        loading: false,
+        product: [],
+        error: action.payload,
+      };
+    default:
+      return {
+        ...state,
+      };
+  }
+};

@@ -3,6 +3,7 @@ import * as actionType from '../actionTypes/categoryActionTypes';
 export const currentCategoryReducer = (state, action) => {
   switch (action.type) {
     case actionType.SET_CURRENT_CATEGORY:
+      localStorage.setItem('current_cat',JSON.stringify(action.payload))
       return {
         ...state,
         ...action.payload,

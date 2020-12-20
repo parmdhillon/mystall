@@ -7,15 +7,31 @@ import {
   allCategoryReducer,
 } from './reducers/categoryReducer';
 
-import { allProductsReducer } from './reducers/productReducers';
+import {
+  allProductsReducer,
+  singleProductReducer,
+} from './reducers/productReducers';
 
 const middleware = [thunk];
 
+const localCurrentCat = () => {
+  try {
+    return localStorage.getItem('current_cat')
+      ? JSON.parse(localStorage.getItem('current_cat'))
+      : {
+          catName: '',
+          _id: '',
+        };
+  } catch (error) {
+    return {
+      catName: '',
+      _id: '',
+    };
+  }
+};
+
 const initialState = {
-  currentCategory: {
-    catName: '',
-    _id: '',
-  },
+  currentCategory: localCurrentCat(),
 };
 
 export const store = createStore(
@@ -23,6 +39,7 @@ export const store = createStore(
     currentCategory: currentCategoryReducer,
     allCategories: allCategoryReducer,
     allProducts: allProductsReducer,
+    singleProduct: singleProductReducer,
   }),
   initialState,
   composeWithDevTools(applyMiddleware(...middleware))
