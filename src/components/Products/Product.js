@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom';
 import ImageLazy from '../ImageLazy/ImageLazy';
 
 const Product = ({ img, name, price, qtyType, id, catName }) => {
+  const categorySlug = catName
+    .toLowerCase()
+    .replace(/ /g, '-')
+    .replace(/[^\w-]+/g, '');
   return (
     <div className="w-full p-2 h-36 sm:h-56 sm:w-1/3">
-      <Link to={`/item/${catName}/${id}`}>
+      <Link to={`/item/${categorySlug}/${id}`}>
         <div className="w-full h-full bg-white rounded-3xl shadow flex flex-row sm:flex-col p-2 hover:bg-gray-200 cursor-pointer overflow-hidden">
           <div
             style={{ flex: '0 0 7em' }}
