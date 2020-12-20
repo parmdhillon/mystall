@@ -44,7 +44,7 @@ const Header = () => {
             ref={menu}
             className={`${
               menuIsOpen && `scale-y-100`
-            } transform origin-top duration-300 scale-y-0 z-10 md:scale-y-100 transition-all absolute m-auto w-11/12 top-16 rounded-2xl flex flex-col p-4 bg-sea-green-700 md:static md:w-auto md:m-0 md:p-0 md:flex-row md:bg-opacity-0 md:justify-end`}
+            } transform origin-top duration-300 scale-y-0 z-20 md:scale-y-100 transition-all absolute m-auto w-11/12 top-16 rounded-2xl flex flex-col p-4 bg-sea-green-700 md:static md:w-auto md:m-0 md:p-0 md:flex-row md:bg-opacity-0 md:justify-end`}
           >
             <NavItem link="/" icon={<FaUser />} name="Account" />
             <NavItem link="/" icon={<FaClipboardList />} name="Orders" />
