@@ -16,15 +16,15 @@ const Products = ({ isHome, history }) => {
   const { loading, products, error } = useSelector(
     (state) => state.allProducts
   );
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (catID) {
-      dispatch(loadProducts(catID));
-    }
-  }, [catID, dispatch]);
 
   let loadOnMobile = isHome && isMobile ? false : true;
 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (loadOnMobile && catID) {
+      dispatch(loadProducts(catID));
+    }
+  }, [catID, dispatch, loadOnMobile]);
   return (
     <>
       {isHome || (
@@ -46,7 +46,7 @@ const Products = ({ isHome, history }) => {
           <Loading />
         ) : error ? (
           <div className="h-56 flex flex-col justify-center items-center">
-            <ErrorBox showBackToHome message={error} />
+            <ErrorBox showBackToHome={!isHome} message={error} />
           </div>
         ) : (
           <div className="w-full flex flex-wrap">
@@ -63,9 +63,7 @@ const Products = ({ isHome, history }) => {
             ))}
           </div>
         )
-      ) : (
-        ''
-      )}
+      ) : null}
     </>
   );
 };

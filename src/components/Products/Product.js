@@ -13,7 +13,7 @@ const Product = ({ img, name, price, qtyType, id, catName }) => {
         <div className="w-full h-full bg-white rounded-3xl shadow flex flex-row sm:flex-col p-2 hover:bg-gray-200 cursor-pointer overflow-hidden">
           <div
             style={{ flex: '0 0 7em' }}
-            className="bg-white sm:w-full h-full sm:h-36 p-2 flex justify-center items-center rounded-3xl overflow-hidden"
+            className="bg-white sm:w-28 sm:m-auto h-full sm:h-36 p-2 flex justify-center items-center rounded-3xl overflow-hidden"
           >
             <ImageLazy src={img} alt={name} />
           </div>

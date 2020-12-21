@@ -31,7 +31,7 @@ const MobileCategory = ({ name, img, id }) => {
         }}
       >
         <div className="bg-white rounded-3xl p-3 w-full m-2 shadow flex flex-col items-center hover:bg-gray-200 ">
-          <div className="w-full h-28 flex justify-center items-center">
+          <div className="w-28 h-28 flex justify-center items-center">
             <ImageLazy src={imgURI} />
           </div>
           <span className="block mt-3 text-gray-500 font-bold">{name}</span>

@@ -3,6 +3,7 @@ import { FaExclamationTriangle } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import { loadCategories } from '../../actions/categoriesActions';
+import ErrorBox from '../ErrorBox/ErrorBox';
 import Loading from '../Loading/Loading';
 import DesktopCategories from './DesktopCategories';
 import MobileCategories from './MobileCategories';
@@ -24,7 +25,7 @@ const Categories = () => {
       {loading ? (
         isMobile && <Loading />
       ) : error ? (
-        <h1>Error</h1>
+        isMobile && <ErrorBox message={error} />
       ) : categories.length ? (
         isMobile ? (
           <MobileCategories categories={categories} />
