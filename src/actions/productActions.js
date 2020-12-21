@@ -25,10 +25,7 @@ export const loadSingleProduct = (catName, prodID) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: actionTypes.GET_PRODUCT_FAIL,
-      payload:
-        error.response && error.response.data.error.message
-          ? error.response.data.error.message
-          : error.message,
+      payload: 'Something Went Wrong!',
     });
   }
 };
