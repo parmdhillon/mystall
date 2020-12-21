@@ -16,7 +16,10 @@ export const loadCategories = (isMobile) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: actionTypes.SET_ALL_CATEGORIES_FAIL,
-      payload: 'Something went wrong!',
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : 'Something went wrong',
     });
   }
 };

@@ -23,7 +23,7 @@ const Products = ({ isHome, history }) => {
     }
   }, [catID, dispatch]);
 
-  const loadOnMobile = !(isHome && isMobile);
+  let loadOnMobile = isHome && isMobile ? false : true;
 
   return (
     <>
@@ -41,26 +41,30 @@ const Products = ({ isHome, history }) => {
           />
         </div>
       )}
-      {loadOnMobile && loading ? (
-        <Loading />
-      ) : error ? (
-        <div className="h-56 flex flex-col justify-center items-center">
-          <ErrorBox showBackToHome message={error} />
-        </div>
+      {loadOnMobile ? (
+        loading ? (
+          <Loading />
+        ) : error ? (
+          <div className="h-56 flex flex-col justify-center items-center">
+            <ErrorBox showBackToHome message={error} />
+          </div>
+        ) : (
+          <div className="w-full flex flex-wrap">
+            {products.map((product) => (
+              <Product
+                name={product.name}
+                key={product._id}
+                catName={catName}
+                id={product._id}
+                img={product.img}
+                price={product.price.toFixed(2)}
+                qtyType={product.qtyType}
+              />
+            ))}
+          </div>
+        )
       ) : (
-        <div className="w-full flex flex-wrap">
-          {products.map((product) => (
-            <Product
-              name={product.name}
-              key={product._id}
-              catName={catName}
-              id={product._id}
-              img={product.img}
-              price={product.price.toFixed(2)}
-              qtyType={product.qtyType}
-            />
-          ))}
-        </div>
+        ''
       )}
     </>
   );

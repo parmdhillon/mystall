@@ -8,9 +8,13 @@ export const loadProducts = (catID) => async (dispatch) => {
     const { data } = await Axios.get(`${API_SERVER}/api/products/${catID}`);
     dispatch({ type: actionTypes.ALL_PRODUCTS_SUCCESS, payload: data });
   } catch (error) {
+    console.log(error.response);
     dispatch({
       type: actionTypes.ALL_PRODUCTS_FAIL,
-      payload: 'Something went wrong',
+      payload:
+        error.response && error.response.data.error.message
+          ? error.response.data.error.message
+          : 'Something went wrong',
     });
   }
 };
@@ -25,7 +29,10 @@ export const loadSingleProduct = (catName, prodID) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: actionTypes.GET_PRODUCT_FAIL,
-      payload: 'Something Went Wrong!',
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : 'Something went wrong',
     });
   }
 };
