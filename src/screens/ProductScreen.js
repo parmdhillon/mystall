@@ -33,7 +33,7 @@ const ProductScreen = ({ history, match }) => {
                 }}
                 className="rounded-xl border-gray-400 text-gray-400 border-2 border-solid py-1 px-3"
               >
-                <FaChevronLeft className="inline-block text-sm" /> Back
+                <FaChevronLeft className="inline -mt-1 text-sm" /> Back
               </button>
               <div className="flex flex-col justify-center items-center">
                 <div className="w-64 h-64">

@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Product from './Product';
-import { loadProducts } from '../../actions/productActions';
+import { loadProducts,searchProducts } from '../../actions/productActions';
 import { useMediaQuery } from 'react-responsive';
 import Loading from '../Loading/Loading';
 import ErrorBox from '../ErrorBox/ErrorBox';
 import { FaChevronCircleLeft } from 'react-icons/fa';
 import { withRouter } from 'react-router-dom';
 
-const Products = ({ isHome, history }) => {
+const Products = ({ isHome, history, keyword }) => {
   const isMobile = useMediaQuery({
     query: '(max-width: 640px)',
   });
@@ -21,17 +21,20 @@ const Products = ({ isHome, history }) => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    if (loadOnMobile && catID) {
+    if(keyword){
+      dispatch(searchProducts(keyword));
+    }
+    else if(loadOnMobile && catID) {
       dispatch(loadProducts(catID));
     }
-  }, [catID, dispatch, loadOnMobile]);
+  }, [catID, dispatch, loadOnMobile, keyword]);
   return (
     <>
       {isHome || (
         <div className="my-3 p-2 bg-sea-green-500 rounded-full relative flex justify-between items-center">
           <div className="sm:hidden absolute w-2/5 h-full bg-sea-green-400 rounded-full -right-12 top-0 float-right"></div>
           <h1 className="text-white text-xl ml-2 font-display my-2">
-            {catName}
+            {keyword || catName}
           </h1>
           <FaChevronCircleLeft
             className="text-sea-green-800 text-3xl cursor-pointer z-10"
