@@ -6,6 +6,7 @@ import MenuButton from '../utils/MenuButton';
 import NavItem from '../utils/NavItem';
 import { IconContext } from 'react-icons';
 import Search from '../Search/Search';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -33,7 +34,9 @@ const Header = () => {
       <header className="w-full px-5 py-3">
         <nav className="w-full flex flex-row justify-between items-center">
           <div className="w-full md:w-auto flex flex-row justify-between items-center">
-            <img src={Logo} className="w-28 sm:w-32 h-9 md:h-10" alt="Logo" />
+            <Link to="/">
+              <img src={Logo} className="w-auto h-8 sm:h-10" alt="Logo" />
+            </Link>
             <Search />
             <MenuButton
               toggleMenuHandler={toggleMenuHandler}

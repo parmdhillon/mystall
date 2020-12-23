@@ -24,7 +24,7 @@ const Search = ({ mobile, history }) => {
         />
         <button
           type="submit"
-          className="bg-sea-green-500 text-white py-2 px-4 rounded-full"
+          className="bg-sea-green-500 text-white py-2 px-4 rounded-full focus:outline-none"
         >
           Search
         </button>

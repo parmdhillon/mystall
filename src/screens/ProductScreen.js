@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { FaCartPlus, FaChevronLeft } from 'react-icons/fa';
+import { FaCartPlus, FaChevronLeft, FaShoppingBag } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { loadSingleProduct } from '../actions/productActions';
@@ -46,9 +46,14 @@ const ProductScreen = ({ history, match }) => {
                 <h1 className="text-gray-500">{product.name}</h1>
                 <span className="text-sea-green-500">${product.price}</span>
               </div>
-              <span className="block text-gray-400 my-1">{product.qtyType}</span>
-              <p className="text-black my-2 block">{product.description}</p>
-              <button className="rounded-full w-full py-4 my-3 bg-sea-green-500 text-white text-xl font-display"><FaCartPlus className="inline -mt-1"/> Add to Basket</button>
+              <span className="block text-gray-400 my-1">
+                <FaShoppingBag className="inline -mt-1" /> &nbsp;
+                {product.qtyType}
+              </span>
+              <p className="text-black my-6 block">{product.description}</p>
+              <button className="rounded-full w-full py-4 my-3 bg-sea-green-500 text-white text-xl font-display focus:outline-none">
+                <FaCartPlus className="inline -mt-1" /> Add to Basket
+              </button>
             </div>
           </div>
         </>
