@@ -36,10 +36,8 @@ const ProductScreen = ({ history, match }) => {
               >
                 <FaChevronLeft className="inline -mt-1 text-sm" /> Back
               </button>
-              <div className="flex flex-col justify-center items-center">
-                <div className="w-64 h-64">
+              <div className="w-full h-64 flex flex-col justify-center items-center">
                   <ImageLazy src={product.img} alt={product.name} />
-                </div>
               </div>
             </div>
             <div className="inline-block md:w-8/12 p-1">
@@ -57,13 +55,11 @@ const ProductScreen = ({ history, match }) => {
               </button>
             </div>
           </div>
-          <div className="my-10">
-            <span className="font-display text-gray-500 block text-xl">
+          <div className="my-6">
+            <span className="font-display text-gray-500 mb-1 block text-xl">
               Related Items
             </span>
-            <div className="max-w-screen-lg mx-auto px-5 overflow-hidden">
-              <RelatedProducts />
-            </div>
+            <RelatedProducts />
           </div>
         </div>
       )}

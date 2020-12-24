@@ -5,8 +5,14 @@ import { randomProducts } from '../../actions/productActions';
 import Loading from '../Loading/Loading';
 import ErrorBox from '../ErrorBox/ErrorBox';
 import { withRouter } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
+import ProductsGrid from './ProductsGrid';
 
 const RelatedProducts = () => {
+  const isMobile = useMediaQuery({
+    query: '(max-width: 640px)',
+  });
+
   const { loading, products, error } = useSelector(
     (state) => state.allProducts
   );
@@ -31,18 +37,32 @@ const RelatedProducts = () => {
           <ErrorBox message={error} />
         </div>
       ) : (
-        <div className="w-full flex flex-wrap">
-          {products.map((product) => (
-            <Product
-              name={product.name}
-              key={product._id}
-              catName={product.category.name}
-              id={product._id}
-              img={product.img}
-              price={product.price.toFixed(2)}
-              qtyType={product.qtyType}
-            />
-          ))}
+        <div
+          className={`flex flex-wrap ${
+            isMobile && `-mx-2 overflow-hidden`
+          }`}
+        >
+          {products.map((product) => {
+            return isMobile ? (
+              <ProductsGrid
+                name={product.name}
+                key={product._id}
+                catName={product.category.name}
+                id={product._id}
+                img={product.img}
+              />
+            ) : (
+              <Product
+                name={product.name}
+                key={product._id}
+                catName={product.category.name}
+                id={product._id}
+                img={product.img}
+                price={product.price.toFixed(2)}
+                qtyType={product.qtyType}
+              />
+            );
+          })}
         </div>
       )}
     </>

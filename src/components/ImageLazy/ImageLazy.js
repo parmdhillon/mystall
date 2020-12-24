@@ -10,7 +10,7 @@ const ImageLazy = ({ src, alt }) => {
       src={src}
       alt={alt}
       debounceDurationMs={200}
-      className="max-w-full max-h-full w-full"
+      className="max-w-full max-h-full w-auto"
       placeholder={({ imageProps, ref }) => (
         <div ref={ref} className="w-full h-full animated-background"></div>
       )}
@@ -19,7 +19,7 @@ const ImageLazy = ({ src, alt }) => {
       error={() => (
         <div className="w-full h-full text-center flex flex-col items-center justify-center bg-gray-200 rounded-3xl">
           <span className="text-gray-400">
-            <MdBrokenImage />{' '}
+            <MdBrokenImage />
           </span>
           <span className="text-gray-400 text-sm">No Image</span>
         </div>

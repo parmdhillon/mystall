@@ -8,7 +8,7 @@ const Product = ({ img, name, price, qtyType, id, catName }) => {
     .replace(/ /g, '-')
     .replace(/[^\w-]+/g, '');
   return (
-    <div className="w-full p-2 h-36 sm:h-56 sm:w-1/3">
+    <div className="w-full py-2 sm:px-2 h-36 sm:h-56 sm:w-1/3">
       <Link to={`/item/${categorySlug}/${id}`}>
         <div className="w-full h-full bg-white rounded-3xl shadow flex flex-row sm:flex-col p-2 hover:bg-gray-200 cursor-pointer overflow-hidden">
           <div
