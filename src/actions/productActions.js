@@ -18,6 +18,22 @@ export const loadProducts = (catID) => async (dispatch) => {
   }
 };
 
+export const randomProducts = () => async (dispatch) => {
+  try {
+    dispatch({ type: actionTypes.ALL_PRODUCTS_REQ });
+    const { data } = await Axios.get(`${API_SERVER}/api/products/random`);
+    dispatch({ type: actionTypes.ALL_PRODUCTS_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: actionTypes.ALL_PRODUCTS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : 'Something went wrong',
+    });
+  }
+};
+
 export const searchProducts = (keyword) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.ALL_PRODUCTS_REQ });

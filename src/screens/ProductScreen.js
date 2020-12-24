@@ -6,25 +6,26 @@ import { loadSingleProduct } from '../actions/productActions';
 import ErrorBox from '../components/ErrorBox/ErrorBox';
 import ImageLazy from '../components/ImageLazy/ImageLazy';
 import Loading from '../components/Loading/Loading';
+import RelatedProducts from '../components/Products/RelatedProducts';
 
 const ProductScreen = ({ history, match }) => {
   const { loading, product, error } = useSelector(
     (state) => state.singleProduct
   );
-
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(loadSingleProduct('item', match.params.prodID));
   }, [dispatch, match.params.prodID]);
 
   return (
-    <div className="max-w-screen-lg mx-auto max-h-screen px-5 overflow-hidden">
+    <div className="max-w-screen-lg mx-auto px-5">
       {loading ? (
         <Loading />
       ) : error ? (
         <ErrorBox showBackToHome message={error} />
       ) : (
-        <>
+        <div>
           <div className="md:flex  my-4">
             <div className="bg-white shadow rounded-3xl p-4 w-full md:inline-block mb-4 md:mb-0 md:mr-4">
               <button
@@ -56,7 +57,15 @@ const ProductScreen = ({ history, match }) => {
               </button>
             </div>
           </div>
-        </>
+          <div className="my-10">
+            <span className="font-display text-gray-500 block text-xl">
+              Related Items
+            </span>
+            <div className="max-w-screen-lg mx-auto px-5 overflow-hidden">
+              <RelatedProducts />
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

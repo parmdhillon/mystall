@@ -7,12 +7,12 @@ import Search from '../components/Search/Search';
 
 const HomeScreen = () => {
   return (
-    <div className="max-w-screen-lg mx-auto px-5">
+    <div className="max-w-screen-lg min-h-screen mx-auto px-5">
       <Search mobile />
       <HomeBanner />
       <BannerCards />
       <Categories />
-      <Products isHome/>
+      <Products isHome />
     </div>
   );
 };

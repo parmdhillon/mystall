@@ -33,7 +33,7 @@ export const allProductsReducer = (
 };
 
 export const singleProductReducer = (
-  state = { loading: false, product: [] },
+  state = { loading: true, product: [] },
   action
 ) => {
   switch (action.type) {

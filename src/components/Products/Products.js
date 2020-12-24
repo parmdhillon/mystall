@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Product from './Product';
-import { loadProducts,searchProducts } from '../../actions/productActions';
+import { loadProducts, searchProducts } from '../../actions/productActions';
 import { useMediaQuery } from 'react-responsive';
 import Loading from '../Loading/Loading';
 import ErrorBox from '../ErrorBox/ErrorBox';
@@ -21,10 +21,9 @@ const Products = ({ isHome, history, keyword }) => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    if(keyword){
+    if (keyword) {
       dispatch(searchProducts(keyword));
-    }
-    else if(loadOnMobile && catID) {
+    } else if (loadOnMobile && catID) {
       dispatch(loadProducts(catID));
     }
   }, [catID, dispatch, loadOnMobile, keyword]);
