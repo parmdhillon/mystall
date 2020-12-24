@@ -32,7 +32,7 @@ const ProductScreen = ({ history, match }) => {
                 onClick={() => {
                   history.goBack();
                 }}
-                className="rounded-xl border-gray-400 text-gray-400 border-2 border-solid py-1 px-3"
+                className="rounded-xl border-gray-100 text-gray-500 border-2 border-solid py-1 px-3"
               >
                 <FaChevronLeft className="inline -mt-1 text-sm" /> Back
               </button>

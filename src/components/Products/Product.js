@@ -10,26 +10,27 @@ const Product = ({ img, name, price, qtyType, id, catName }) => {
   return (
     <div className="w-full py-2 sm:px-2 h-36 sm:h-56 sm:w-1/3">
       <Link to={`/item/${categorySlug}/${id}`}>
-        <div className="w-full h-full bg-white rounded-3xl shadow flex flex-row sm:flex-col p-2 hover:bg-gray-200 cursor-pointer overflow-hidden">
+        <div className="w-full h-full bg-white rounded-3xl shadow flex flex-row sm:flex-col p-2 hover:bg-gray-200 cursor-pointer overflow-hidden ">
           <div
-            style={{ flex: '0 0 7em' }}
-            className="bg-white sm:w-28 sm:m-auto h-full sm:h-36 p-2 flex justify-center items-center rounded-3xl overflow-hidden"
+            className="bg-white w-2/5 sm:w-28 sm:m-auto h-full sm:h-36 p-2 flex justify-center items-center rounded-3xl overflow-hidden"
           >
             <ImageLazy src={img} alt={name} />
           </div>
-          <div className="ml-4 w-full flex justify-center sm:items-center flex-col overflow-hidden">
+          <div className="ml-4 sm:ml-0 w-3/5 sm:w-full block my-auto">
             <span
-              style={{ textOverflow: '"...     "' }}
-              className="text-black font-bold overflow-ellipsis	sm:text-center overflow-hidden block w-full whitespace-nowrap"
+              className="text-black font-bold sm:text-center block overflow-hidden overflow-ellipsis whitespace-nowrap"
             >
               {name}
             </span>
-            <span className="font-bold text-sea-green-500 text-lg">
+            <div className="sm:text-center overflow-hidden overflow-ellipsis whitespace-nowrap px-1">
+              <span className="font-bold text-sea-green-500 text-lg">
               ${price}
               <span className="text-gray-500 text-sm font-normal ">
                 /{qtyType}
               </span>
             </span>
+            </div>
+            
           </div>
         </div>
       </Link>
