@@ -1,7 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Logo from '../../assets/img/Logo.png';
 import './Header.css';
-import { FaClipboardList, FaShoppingCart, FaUser } from 'react-icons/fa';
+import {
+  FaClipboardList,
+  FaSearch,
+  FaShoppingCart,
+  FaUser,
+} from 'react-icons/fa';
 import MenuButton from '../utils/MenuButton';
 import NavItem from '../utils/NavItem';
 import { IconContext } from 'react-icons';
@@ -38,10 +43,15 @@ const Header = () => {
               <img src={Logo} className="w-auto h-8 sm:h-10" alt="Logo" />
             </Link>
             <Search />
-            <MenuButton
-              toggleMenuHandler={toggleMenuHandler}
-              menuIsOpen={menuIsOpen}
-            />
+            <div className="flex items-center">
+              <Link to="/search">
+                <FaSearch style={{color:'#D1D5DB'}} className="inline-block text-xl mr-4" />
+              </Link>
+              <MenuButton
+                toggleMenuHandler={toggleMenuHandler}
+                menuIsOpen={menuIsOpen}
+              />
+            </div>
           </div>
           <div
             ref={menu}

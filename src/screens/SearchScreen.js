@@ -6,7 +6,7 @@ const SearchScreen = ({ location }) => {
   const params = new URLSearchParams(location.search);
   const keyword = params.get('q');
   return (
-    <div className="max-w-screen-lg mx-auto px-5 overflow-hidden">
+    <div className="max-w-screen-lg mx-auto px-5 py-1 overflow-hidden">
       {keyword ? <Products keyword={keyword} /> : <Search mobile />}
     </div>
   );
