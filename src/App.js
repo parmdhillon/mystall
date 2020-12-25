@@ -1,10 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
-import CategoryScreen from './screens/CategoryScreen';
 import HomeScreen from './screens/HomeScreen';
-import ProductScreen from './screens/ProductScreen';
-import SearchScreen from './screens/SearchScreen';
+
+import loadable from '@loadable/component'
+
+
+const CategoryScreen = loadable(() => import('./screens/CategoryScreen'));
+const ProductScreen = loadable(() => import('./screens/ProductScreen'));
+const SearchScreen = loadable(() => import('./screens/SearchScreen'));
 
 function App() {
   return (

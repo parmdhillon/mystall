@@ -18,7 +18,7 @@ const Product = ({ img, name, price, qtyType, id, catName }) => {
           </div>
           <div className="ml-4 sm:ml-0 w-3/5 sm:w-full block my-auto">
             <span
-              className="text-black font-bold sm:text-center block overflow-hidden overflow-ellipsis whitespace-nowrap"
+              className="text-black font-bold sm:text-center block sm:overflow-hidden sm:overflow-ellipsis sm:whitespace-nowrap"
             >
               {name}
             </span>
