@@ -1,8 +1,11 @@
 import Axios from 'axios';
 import * as actionTypes from '../actionTypes/cartActions';
+import API_SERVER from '../apiServer.js';
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
-  const { data } = await Axios.get(`/api/products/category/${id}`);
+  const { data } = await Axios.get(`${API_SERVER}/api/products/category/${id}`);
+
+  if (!data?._id) return;
 
   dispatch({
     type: actionTypes.CART_ADD_ITEM,
