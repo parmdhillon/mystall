@@ -29,9 +29,9 @@ const localCart = () => {
   try {
     return localStorage.getItem('cartItems')
       ? JSON.parse(localStorage.getItem('cartItems'))
-      : null;
+      : [];
   } catch (error) {
-    return null;
+    return [];
   }
 };
 
