@@ -19,20 +19,25 @@ const localCurrentCat = () => {
   try {
     return localStorage.getItem('current_cat')
       ? JSON.parse(localStorage.getItem('current_cat'))
-      : {
-          catName: '',
-          _id: '',
-        };
+      : null;
   } catch (error) {
-    return {
-      catName: '',
-      _id: '',
-    };
+    return null;
+  }
+};
+
+const localCart = () => {
+  try {
+    return localStorage.getItem('cartItems')
+      ? JSON.parse(localStorage.getItem('cartItems'))
+      : null;
+  } catch (error) {
+    return null;
   }
 };
 
 const initialState = {
   currentCategory: localCurrentCat(),
+  cart: { cartItems: localCart() },
 };
 
 export const store = createStore(
