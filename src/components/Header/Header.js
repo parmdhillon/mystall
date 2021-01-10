@@ -12,9 +12,11 @@ import NavItem from '../utils/NavItem';
 import { IconContext } from 'react-icons';
 import Search from '../Search/Search';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const { cartItems } = useSelector((state) => state.cart);
   const menu = useRef(null);
   const toggleMenuHandler = (e) => {
     if (e.target === menu.current) return;
@@ -43,9 +45,20 @@ const Header = () => {
               <img src={Logo} className="w-auto h-8 sm:h-10" alt="Logo" />
             </Link>
             <Search />
-            <div className="flex items-center">
+            <div className="flex md:hidden items-center">
               <Link to="/search">
-                <FaSearch style={{color:'#D1D5DB'}} className="inline-block text-xl mr-4" />
+                <FaSearch
+                  style={{ color: '#D1D5DB' }}
+                  className="inline-block text-xl mr-6"
+                />
+              </Link>
+              <Link to="/cart">
+                <div className="badge top" data-badge={cartItems.length}>
+                  <FaShoppingCart
+                    style={{ color: '#D1D5DB' }}
+                    className="inline-block text-2xl mr-8 relative"
+                  />
+                </div>
               </Link>
               <MenuButton
                 toggleMenuHandler={toggleMenuHandler}
@@ -61,7 +74,12 @@ const Header = () => {
           >
             <NavItem link="/" icon={<FaUser />} name="Account" />
             <NavItem link="/" icon={<FaClipboardList />} name="Orders" />
-            <NavItem link="/" icon={<FaShoppingCart />} name="Cart" badge="2" />
+            <NavItem
+              link="/"
+              icon={<FaShoppingCart />}
+              name="Cart"
+              badge={cartItems.length}
+            />
           </div>
         </nav>
       </header>

@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { FaCartPlus, FaChevronLeft, FaShoppingBag } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import Notify from '../components/Notify/Notify';
 import { addToCart, removeFromCart } from '../actions/cartActions';
 import { loadSingleProduct } from '../actions/productActions';
 import ErrorBox from '../components/ErrorBox/ErrorBox';
@@ -29,6 +31,7 @@ const ProductScreen = ({ history, match }) => {
   }, [dispatch, match.params.prodID]);
 
   const addToCartHandler = () => {
+    Notify('Added To Cart', 'success', 'Add_To_Cart');
     dispatch(addToCart(product._id, qtyMore));
   };
 
@@ -48,6 +51,7 @@ const ProductScreen = ({ history, match }) => {
         <ErrorBox showBackToHome message={error} />
       ) : (
         <div>
+          <ToastContainer />
           <div className="md:flex  my-4">
             <div className="bg-white shadow rounded-3xl p-4 w-full md:inline-block mb-4 md:mb-0 md:mr-4">
               <button
@@ -80,7 +84,10 @@ const ProductScreen = ({ history, match }) => {
                   >
                     -
                   </button>
-                  <span>{itemInCart?.qty}</span>
+                  <span className="inline-block bg-sea-green-500 text-white py-2 px-4 rounded-full">
+                    <FaShoppingBag className="inline -mt-1" /> &nbsp;
+                    {itemInCart?.qty}
+                  </span>
                   <button
                     onClick={() => addToCartHandler()}
                     className="bg-sea-green-500 py-1 px-4 rounded text-2xl text-white"
