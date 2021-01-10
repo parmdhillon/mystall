@@ -39,7 +39,7 @@ const ProductScreen = ({ history, match }) => {
     if (qtyLess === 0) {
       dispatch(removeFromCart(product._id));
     } else {
-      dispatch(addToCart(product._id, qtyLess));
+      dispatch(addToCart(product._id, qtyLess)); //Update Cart Items // qtyLess is number items to be set
     }
   };
 
