@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { withRouter } from 'react-router-dom';
 
 const Search = ({ mobile, history }) => {
-  const { register, handleSubmit} = useForm();
+  const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     history.push(`/search?q=${encodeURI(data.keyword)}`);
   };
@@ -15,15 +15,17 @@ const Search = ({ mobile, history }) => {
       } sm:flex bg-white p-1 pl-2 justify-between items-center rounded-full sm:ml-0 md:ml-4 lg:ml-10 shadow`}
     >
       <FaSearch style={{ color: '#BBC4C3', display: 'block' }} />
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="flex justify-center flex-grow">
         <input
           type="text"
           name="keyword"
           ref={register({ required: true })}
-          className={`${mobile && `flex-1`} outline-none ml-2`}
+          className={`outline-none w-full`}
+          style={{ flexShrink: '2', flexGrow: '1',flexBasis:'100%' }}
         />
         <button
           type="submit"
+          style={{ flexGrow: '0' }}
           className="bg-sea-green-500 text-white py-2 px-4 rounded-full focus:outline-none"
         >
           Search

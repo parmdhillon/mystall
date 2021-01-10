@@ -14,13 +14,15 @@ const CartScreen = () => {
   const { cartItems } = useSelector((state) => state.cart);
   const totalPrice =
     cartItems?.length &&
-    cartItems
-      .map((item) => (item.price * item.qty).toFixed(2))
-      .reduce((accumulator, currentValue) => accumulator * 1 + currentValue * 1)
-      .toFixed(2);
-  const tax = totalPrice && ((Number(totalPrice) * 13) / 100).toFixed(2);
-  const grandTotal =
-    totalPrice && (Number(totalPrice) + 11 + Number(tax)).toFixed(2);
+    Number(
+      cartItems
+        .map((item) => (item.price * item.qty).toFixed(2))
+        .reduce(
+          (accumulator, currentValue) => accumulator * 1 + currentValue * 1
+        )
+    );
+  const tax = totalPrice && (Number(totalPrice) * 13) / 100;
+  const grandTotal = totalPrice && Number(totalPrice) + 11 + Number(tax);
 
   const dispatch = useDispatch();
 
@@ -113,7 +115,7 @@ const CartScreen = () => {
         <div className="w-full md:w-1/2 md:inline-block py-8 md:pl-8">
           <div className="flex justify-between font-bold my-1">
             <span>Sub Total</span>
-            <span className="text-sea-green-500">${totalPrice}</span>
+            <span className="text-sea-green-500">${totalPrice.toFixed(2)}</span>
           </div>
           <div className="flex justify-between font-bold my-1">
             <span>Delivery Fees</span>
@@ -121,12 +123,30 @@ const CartScreen = () => {
           </div>
           <div className="flex justify-between font-bold my-1">
             <span>Tax (GST/PST)</span>
-            <span>${tax}</span>
+            <span>${tax.toFixed(2)}</span>
           </div>
           <div className="border-t border-gray-200 border-solid my-5"></div>
           <div className="flex justify-between font-display text-2xl">
             <span>Total</span>
-            <span className="text-sea-green-500">${grandTotal}</span>
+            <span className="text-sea-green-500">${grandTotal.toFixed(2)}</span>
+          </div>
+          <div className="my-5 w-full">
+            <div className="w-1/2 inline-block pr-2">
+              <Link
+                to="/"
+                className="w-full py-2 border-2 rounded-2xl border-sea-green-500 inline-block text-center bg-sea-green-100 font-bold text-sea-green-500"
+              >
+                Shop More
+              </Link>
+            </div>
+            <div className="w-1/2 inline-block pl-2">
+              <Link
+                to="/checkout"
+                className="w-full py-2  border-2 rounded-2xl border-sea-green-500 inline-block text-center bg-sea-green-500 font-bold text-sea-green-900"
+              >
+                Checkout
+              </Link>
+            </div>
           </div>
         </div>
       </div>
