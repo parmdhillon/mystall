@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Logo from '../../assets/img/Logo.png';
 import './Header.css';
-import { FaHome, FaSearch, FaShoppingCart, FaUser } from 'react-icons/fa';
+import { FaHome, FaSearch, FaShoppingCart } from 'react-icons/fa';
 import MenuButton from '../utils/MenuButton';
 import NavItem from '../utils/NavItem';
 import { IconContext } from 'react-icons';

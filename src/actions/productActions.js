@@ -8,6 +8,7 @@ export const loadProducts = (catID, page) => async (dispatch) => {
     const { data } = await Axios.get(
       `${API_SERVER}/api/products/${catID}?page=${page}`
     );
+    console.log(data);
     dispatch({ type: actionTypes.ALL_PRODUCTS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
