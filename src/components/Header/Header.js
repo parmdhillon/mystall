@@ -1,12 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Logo from '../../assets/img/Logo.png';
 import './Header.css';
-import {
-  FaHome,
-  FaSearch,
-  FaShoppingCart,
-  FaUser,
-} from 'react-icons/fa';
+import { FaHome, FaSearch, FaShoppingCart, FaUser } from 'react-icons/fa';
 import MenuButton from '../utils/MenuButton';
 import NavItem from '../utils/NavItem';
 import { IconContext } from 'react-icons';
@@ -73,7 +68,6 @@ const Header = () => {
             } transform origin-top duration-300 scale-y-0 z-20 md:scale-y-100 transition-all absolute m-auto w-11/12 top-16 rounded-2xl flex flex-col p-4 bg-sea-green-700 md:static md:w-auto md:m-0 md:p-0 md:flex-row md:bg-opacity-0 md:justify-end`}
           >
             <NavItem link="/" icon={<FaHome />} name="Grocery" />
-            <NavItem link="/account" icon={<FaUser />} name="Account" />
             <NavItem
               link="/cart"
               icon={<FaShoppingCart />}

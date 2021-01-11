@@ -2,10 +2,12 @@ import Axios from 'axios';
 import * as actionTypes from '../actionTypes/productActionTypes';
 import API_SERVER from '../apiServer';
 
-export const loadProducts = (catID) => async (dispatch) => {
+export const loadProducts = (catID, page) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.ALL_PRODUCTS_REQ });
-    const { data } = await Axios.get(`${API_SERVER}/api/products/${catID}`);
+    const { data } = await Axios.get(
+      `${API_SERVER}/api/products/${catID}?page=${page}`
+    );
     dispatch({ type: actionTypes.ALL_PRODUCTS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -21,7 +23,11 @@ export const loadProducts = (catID) => async (dispatch) => {
 export const randomProducts = () => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.ALL_PRODUCTS_REQ });
-    const { data } = await Axios.get(`${API_SERVER}/api/products/random`);
+    let { data } = await Axios.get(`${API_SERVER}/api/products/random`);
+    data = {
+      products: data,
+      totalProducts: [null],
+    };
     dispatch({ type: actionTypes.ALL_PRODUCTS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -34,7 +40,7 @@ export const randomProducts = () => async (dispatch) => {
   }
 };
 
-export const searchProducts = (keyword) => async (dispatch) => {
+export const searchProducts = (keyword, page) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.ALL_PRODUCTS_REQ });
 
@@ -47,9 +53,14 @@ export const searchProducts = (keyword) => async (dispatch) => {
       data: { keyword },
     };
 
-    const { data } = await Axios(config);
+    let { data } = await Axios(config);
+    data = {
+      products: data,
+      totalProducts: [null],
+    };
     dispatch({ type: actionTypes.ALL_PRODUCTS_SUCCESS, payload: data });
   } catch (error) {
+    console.log(error);
     dispatch({
       type: actionTypes.ALL_PRODUCTS_FAIL,
       payload:

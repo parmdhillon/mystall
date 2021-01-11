@@ -4,7 +4,7 @@ import Products from '../components/Products/Products';
 const CategoryScreen = () => {
   return (
     <div className="max-w-screen-lg mx-auto px-5 overflow-hidden">
-      <Products/>
+      <Products paginate />
     </div>
   );
 };

@@ -6,27 +6,31 @@ import { useMediaQuery } from 'react-responsive';
 import Loading from '../Loading/Loading';
 import ErrorBox from '../ErrorBox/ErrorBox';
 import { FaChevronCircleLeft } from 'react-icons/fa';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
-const Products = ({ isHome, history, keyword }) => {
+const Products = ({ isHome, history, location, keyword, paginate }) => {
   const isMobile = useMediaQuery({
     query: '(max-width: 640px)',
   });
   const { catName, _id: catID } = useSelector((state) => state.currentCategory);
-  const { loading, products, error } = useSelector(
+  const { loading, products, totalProducts, error } = useSelector(
     (state) => state.allProducts
   );
-
+  const params = new URLSearchParams(location.search);
+  const page = Number(params.get('page') || 1);
+  const maxLimit = Number(totalProducts) / 12 < page; //if Products less than pages (negative approch)
   let loadOnMobile = isHome && isMobile ? false : true;
 
   const dispatch = useDispatch();
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (keyword) {
-      dispatch(searchProducts(keyword));
+      dispatch(searchProducts(keyword, page));
     } else if (loadOnMobile && catID) {
-      dispatch(loadProducts(catID));
+      dispatch(loadProducts(catID, page));
     }
-  }, [catID, dispatch, loadOnMobile, keyword]);
+  }, [catID, dispatch, loadOnMobile, keyword, page]);
+
   return (
     <>
       {isHome || (
@@ -51,19 +55,45 @@ const Products = ({ isHome, history, keyword }) => {
             <ErrorBox showBackToHome={!isHome} message={error} />
           </div>
         ) : (
-          <div className="w-full flex flex-wrap">
-            {products.map((product) => (
-              <Product
-                name={product.name}
-                key={product._id}
-                catName={catName}
-                id={product._id}
-                img={product.img}
-                price={product.price.toFixed(2)}
-                qtyType={product.qtyType}
-              />
-            ))}
-          </div>
+          <>
+            <div className="w-full flex flex-wrap">
+              {products.map((product) => (
+                <Product
+                  name={product.name}
+                  key={product._id}
+                  catName={catName}
+                  id={product._id}
+                  img={product.img}
+                  price={product.price.toFixed(2)}
+                  qtyType={product.qtyType}
+                />
+              ))}
+            </div>
+            {paginate && (
+              <div className="my-5 max-w-md flex justify-evenly items-center">
+                <Link
+                  className={`py-2 px-4 rounded-lg text-white ${
+                    page === 1
+                      ? `bg-gray-300 cursor-not-allowed`
+                      : `bg-sea-green-500`
+                  }`}
+                  to={`?page=${page === 1 ? 1 : page - 1}`}
+                >
+                  Back
+                </Link>
+                <Link
+                  className={`py-2 px-4 rounded-lg text-white ${
+                    maxLimit
+                      ? `bg-gray-300 cursor-not-allowed`
+                      : `bg-sea-green-500`
+                  }`}
+                  to={`?page=${maxLimit ? page : page + 1}`}
+                >
+                  Next
+                </Link>
+              </div>
+            )}
+          </>
         )
       ) : null}
     </>

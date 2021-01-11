@@ -5,6 +5,7 @@ import HomeScreen from './screens/HomeScreen';
 
 import loadable from '@loadable/component';
 import CartScreen from './screens/CartScreen';
+import CheckoutScreen from './screens/CheckoutScreen';
 const CategoryScreen = loadable(() => import('./screens/CategoryScreen'));
 const ProductScreen = loadable(() => import('./screens/ProductScreen'));
 const SearchScreen = loadable(() => import('./screens/SearchScreen'));
@@ -16,6 +17,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={HomeScreen} />
         <Route path="/cart" component={CartScreen} />
+        <Route path="/checkout" component={CheckoutScreen} />
         <Route path="/item/:catname/:prodID" component={ProductScreen} />
         <Route path="/category/:catname" component={CategoryScreen} />
         <Route path="/search" component={SearchScreen} />

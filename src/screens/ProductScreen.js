@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { FaCartPlus, FaChevronLeft, FaShoppingBag } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Notify from '../components/Notify/Notify';
 import { addToCart, removeFromCart } from '../actions/cartActions';
@@ -75,7 +75,18 @@ const ProductScreen = ({ history, match }) => {
                 <FaShoppingBag className="inline -mt-1" /> &nbsp;
                 {product.qtyType}
               </span>
-              <p className="text-black my-6 block">{product.description}</p>
+              <p className="text-black mt-6 block">{product.description}</p>
+              <div className="mb-6">
+                {itemInCart && (
+                  <Link
+                    to="/cart"
+                    className="underline text-sea-green-500 font-bold inline-block mt-2"
+                  >
+                    Checkout Cart &#8594;
+                  </Link>
+                )}
+              </div>
+
               {itemInCart ? (
                 <div className="flex justify-between items-center m-auto max-w-sm">
                   <button
