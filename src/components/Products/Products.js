@@ -70,7 +70,7 @@ const Products = ({ isHome, history, location, keyword, paginate }) => {
               ))}
             </div>
             {paginate && (
-              <div className="my-5 max-w-md flex justify-evenly items-center">
+              <div className="my-5 max-w-md m-auto flex justify-evenly items-center">
                 <Link
                   className={`py-2 px-4 rounded-lg text-white ${
                     page === 1
