@@ -1,5 +1,5 @@
 const API_SERVER =
   process.env.NODE_ENV === 'development'
     ? ''
-    : 'https://mystall-backend-7q29l.ondigitalocean.app';
+    : 'https://mystall.herokuapp.com/';
 export default API_SERVER;
